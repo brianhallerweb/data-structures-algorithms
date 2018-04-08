@@ -14,6 +14,8 @@
  *            as the original input.
  */
 
+// My thoughts about the solution: The hardest part of this problem is seeing the recursive call. Noticing that the power set is creating by either adding or not adding to the existing string is a very difficult insight. The base case is also a little tricky to see but I think it makes sense when you visualize the recursion as a tree. The build (subset) needs to be pushed into the results array when depth === str.length.
+
 function powerset(str) {
   let result = [];
 
