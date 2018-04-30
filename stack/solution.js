@@ -12,3 +12,18 @@ class Stack {
     return this.data.pop();
   }
 }
+
+class Stack {
+  constructor() {
+    this.data = [];
+  }
+  push(record) {
+    this.data.unshift(record);
+  }
+  peek() {
+    return this.data[0];
+  }
+  pop() {
+    return this.data.shift();
+  }
+}
