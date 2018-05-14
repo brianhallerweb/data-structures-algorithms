@@ -12,3 +12,8 @@ function reverse(str) {
     .reverse()
     .join("");
 }
+
+function reverse(str) {
+  const letters = str.split("");
+  return letters.reduce((a, b) => b + a);
+}
