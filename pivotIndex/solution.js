@@ -1,23 +1,13 @@
-// Pivot Index
-
-//input
-// array of integers
-
-// output
-// index integer
-
-//constraints
-// time complexity is O(n) and aux space O(1)
-
 // diagram
 // initialize left sum and right sum
 // loop through array and set right sum to total
-// loop thorugh again and for each element, add to left sum and subtract from right sum
+// loop thorugh again and, for each element, add to left sum
+// and subtract from right sum
 // if left and right are equal, then you return index.
-// return -1
+// else return -1
 
-//code
 function pivotIndex(arr) {
+  if (arr.length < 3) return -1;
   let leftSum = 0;
   let rightSum = arr.reduce((a, b) => a + b);
 
@@ -30,5 +20,3 @@ function pivotIndex(arr) {
   }
   return -1;
 }
-
-console.log(pivotIndex([5, 5, 5, 5, 1, 20]));
