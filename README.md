@@ -7,4 +7,4 @@
 ##### solution.js shows examples of possible solutions. 
 
 ##### test.js includes unit tests written in Jest. To run the tests: 
-```$ npm test /fizzBuzz/test.js
+```$ npm test /fizzBuzz/test.js```
