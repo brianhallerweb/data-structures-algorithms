@@ -6,5 +6,7 @@ index.js gives instructions, constraints, and the opportunity to write your own 
 
 solution.js shows examples of possible solutions. 
 
-test.js includes unit tests written in Jest. To run the tests: 
+test.js includes unit tests written in Jest. 
+
+To run the tests: 
 ```$ npm test /folder-name/test.js```
