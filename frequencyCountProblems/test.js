@@ -15,6 +15,26 @@ describe("wordCount", () => {
   it("should be a function", () => {
     expect(typeof fc.wordCount).toBe("function");
   });
+  it("should count words", () => {
+    expect(fc.wordCount("The cat and the hat.")).toEqual({
+      the: 2,
+      cat: 1,
+      and: 1,
+      hat: 1
+    });
+    expect(fc.wordCount("As soon as possible.")).toEqual({
+      as: 2,
+      soon: 1,
+      possible: 1
+    });
+    expect(fc.wordCount("It's a man, it's a plane, it's superman!")).toEqual({
+      its: 3,
+      a: 2,
+      man: 1,
+      plane: 1,
+      superman: 1
+    });
+  });
 });
 
 describe("rgb", () => {

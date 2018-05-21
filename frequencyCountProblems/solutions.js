@@ -35,6 +35,18 @@ function wordCount(sentence) {
   return hash;
 }
 
+//a functional approach to wordCount
+function wordCount(sentence) {
+  sentence = sentence
+    .toLowerCase()
+    .replace(/[^\w ]/g, "")
+    .split(" ");
+  return sentence.reduce((acc, word) => {
+    const count = acc[word] || 0;
+    return { ...acc, [word]: count + 1 };
+  }, {});
+}
+
 function rgb(string) {
   const rgb = [0, 0, 0];
   for (let letter of string) {

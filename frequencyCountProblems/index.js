@@ -44,7 +44,21 @@ module.exports.unique = function(arr) {};
  * 'It's a man, it's a plane, it's superman!' --> '{ its: 3, a: 2, man: 1, plane: 1, superman: 1 }'`
  */
 
-module.exports.wordCount = function(sentence) {};
+module.exports.wordCount = function(sentence) {
+  sentence = sentence
+    .toLowerCase()
+    .replace(/[^\w ]/g, "")
+    .split(" ");
+  const hash = {};
+  for (let word of sentence) {
+    if (hash[word]) {
+      hash[word]++;
+    } else if (word) {
+      hash[word] = 1;
+    }
+  }
+  return hash;
+};
 
 /**
  * RGB Set
