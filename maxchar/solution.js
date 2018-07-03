@@ -1,7 +1,11 @@
 function maxChar(str) {
   let obj = {};
   for (let letter of str) {
-    if (obj[letter]) {
+    if (
+      obj[
+        letter
+      ] /*"letter in obj" also works and is a little more declarative*/
+    ) {
       obj[letter]++;
     } else {
       obj[letter] = 1;
