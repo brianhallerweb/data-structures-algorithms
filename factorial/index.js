@@ -1,15 +1,7 @@
-// function factorial(n) {
-//   if (n < 0 || !Number.isInteger(n)) {
-//     throw Error("input must be a whole number");
-//   }
-//   let result = 1;
-//   for (let i = 1; i <= n; i++) {
-//     result *= i;
-//   }
-//   return result;
-// }
-
 function factorial(n) {
+  if (!Number.isInteger(n) || n < 0) {
+    throw Error("input must be an integer");
+  }
   let result = 1;
   function multiply(i) {
     if (i === 0) return;
