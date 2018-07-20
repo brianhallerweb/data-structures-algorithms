@@ -11,23 +11,8 @@
 // Time Complexity: O(log N)
 // Auxiliary Space Complexity: O(log N)
 
-function toBinary(int) {
-  let exponent = 0;
-  let result = "";
-  while (Math.pow(2, exponent) * 2 < int) {
-    exponent++;
-  }
-  while (int > 0) {
-    let num = Math.pow(2, exponent);
-    if (num <= int) {
-      result += "1";
-      int -= num;
-    } else {
-      result += "0";
-    }
-    exponent--;
-  }
-  return result;
-}
+function toBinary(int) {}
 
 module.exports = toBinary;
+
+console.log(toBinary(5));

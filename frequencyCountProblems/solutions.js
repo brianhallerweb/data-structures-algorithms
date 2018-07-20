@@ -8,15 +8,11 @@ function unique(arr) {
 
 //alternative solution for unique
 function unique(arr) {
-  const objMap = {};
-  for (let i of arr) {
-    if (!objMap[i]) {
-      objMap[i] = 1;
-    }
+  const obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    obj[arr[i]] = null;
   }
-  const stringsArr = Object.keys(objMap);
-  const intsArr = stringsArr.map(string => parseInt(string));
-  return intsArr;
+  return Object.keys(obj).map(key => Number(key));
 }
 
 function wordCount(sentence) {
@@ -70,6 +66,25 @@ function missingNumber(n, arr) {
     set.delete(el);
   }
   return [...set];
+}
+
+// a more manual solution
+function missingNumber(n, arr) {
+  const missingNumbers = [];
+  let sortedArr = arr.sort((a, b) => a - b);
+  if (sortedArr[0] !== 1) {
+    missingNumbers.push(1);
+  }
+  for (let i = 0; i < n - 2; i++) {
+    if (sortedArr[i] + 1 !== sortedArr[i + 1]) {
+      sortedArr.splice(i + 1, 0, sortedArr[i] + 1);
+      missingNumbers.push(sortedArr[i] + 1);
+    }
+  }
+  if (sortedArr[sortedArr.length - 1] !== n) {
+    missingNumbers.push(n);
+  }
+  return missingNumbers;
 }
 
 function letterSort(string) {
@@ -130,35 +145,50 @@ function getDuplicates(arr) {
   const results = [];
   for (let key in objMap) {
     if (objMap[key] > 1) {
-      results.push(parseInt(key));
+      results.push(Number(key));
     }
   }
   return results;
 }
 
 function anagramPair(string1, string2) {
-  if (string1.length !== string2.length) return false;
-  const objMap1 = {};
+  if (string1.length !== string2.length) {
+    return false;
+  }
+
+  const string1Map = {};
   for (let letter of string1) {
-    if (objMap1[letter]) {
-      objMap1[letter]++;
+    if (string1Map[letter]) {
+      string1Map[letter]++;
     } else {
-      objMap1[letter] = 1;
+      string1Map[letter] = 1;
     }
   }
-  const objMap2 = {};
+  const string2Map = {};
   for (let letter of string2) {
-    if (objMap2[letter]) {
-      objMap2[letter]++;
+    if (string2Map[letter]) {
+      string2Map[letter]++;
     } else {
-      objMap2[letter] = 1;
+      string2Map[letter] = 1;
     }
   }
-  for (let letter in objMap1) {
-    if (objMap1[letter] !== objMap2[letter]) {
+
+  const string1Keys = Object.keys(string1Map);
+  const string2Keys = Object.keys(string2Map);
+  for (let letter in string1Keys) {
+    if (!string1.includes(string2Keys[letter])) {
       return false;
     }
   }
+
+  const string1Values = Object.values(string1Map);
+  const string2Values = Object.values(string2Map);
+  for (let letter in string1Values) {
+    if (string1Values[letter] !== string2Values[letter]) {
+      return false;
+    }
+  }
+
   return true;
 }
 
@@ -169,9 +199,15 @@ function anagramPalindrome(string) {
   }
   let oddCounter = 0;
   for (let key in objMap) {
-    if (objMap[key] % 2) oddCounter++;
+    if (objMap[key] % 2) {
+      oddCounter++;
+    }
   }
-  if (oddCounter === 1 && string.length % 2) return true;
-  if (oddCounter === 0 && !string.length % 2) return true;
+  if (oddCounter === 1 && string.length % 2) {
+    return true;
+  }
+  if (oddCounter === 0 && !string.length % 2) {
+    return true;
+  }
   return false;
 }

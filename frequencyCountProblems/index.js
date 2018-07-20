@@ -17,8 +17,13 @@
 * [1, 2, 3, 1, 2] --> [1, 2, 3]
 */
 
-module.exports.unique = function(arr) {};
-
+module.exports.unique = function(arr) {
+  const obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    obj[arr[i]] = null;
+  }
+  return Object.keys(obj).map(key => Number(key));
+};
 /**
  * Word Count
  *
@@ -45,19 +50,19 @@ module.exports.unique = function(arr) {};
  */
 
 module.exports.wordCount = function(sentence) {
-  sentence = sentence
+  const words = sentence
     .toLowerCase()
     .replace(/[^\w ]/g, "")
     .split(" ");
-  const hash = {};
-  for (let word of sentence) {
-    if (hash[word]) {
-      hash[word]++;
-    } else if (word) {
-      hash[word] = 1;
+  const objMap = {};
+  for (let word of words) {
+    if (objMap[word]) {
+      objMap[word]++;
+    } else {
+      objMap[word] = 1;
     }
   }
-  return hash;
+  return objMap;
 };
 
 /**
@@ -81,7 +86,19 @@ module.exports.wordCount = function(sentence) {
  * `'bbrr' --> 0`
  */
 
-module.exports.rgb = function(string) {};
+module.exports.rgb = function(string) {
+  const rgb = [0, 0, 0];
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] === "r") {
+      rgb[0]++;
+    } else if (string[i] === "g") {
+      rgb[1]++;
+    } else if (string[i] === "b") {
+      rgb[2]++;
+    }
+  }
+  return Math.min(...rgb);
+};
 
 /**
  * Missing Number
@@ -104,7 +121,27 @@ module.exports.rgb = function(string) {};
  * `6, [6, 4, 2, 1] --> [3, 5]`
  */
 
-module.exports.missingNumber = function(n, arr) {};
+module.exports.missingNumber = function(n, arr) {
+  const missingNumbers = [];
+  let sortedArr = arr.sort((a, b) => a - b);
+  if (sortedArr[0] !== 1) {
+    missingNumbers.push(1);
+  }
+  let i = 0;
+  while (i < n - 2) {
+    if (sortedArr[i] + 1 !== sortedArr[i + 1]) {
+      sortedArr.splice(i + 1, 0, sortedArr[i] + 1);
+      missingNumbers.push(sortedArr[i] + 1);
+      i++;
+    } else {
+      i++;
+    }
+  }
+  if (sortedArr[sortedArr.length - 1] !== n) {
+    missingNumbers.push(n);
+  }
+  return missingNumbers;
+};
 
 /**
  * Letter Sort
@@ -125,7 +162,12 @@ module.exports.missingNumber = function(n, arr) {};
  * `one --> eno`
  */
 
-module.exports.letterSort = function(string) {};
+module.exports.letterSort = function(string) {
+  return string
+    .split("")
+    .sort()
+    .join("");
+};
 
 /**
  * Character Mode
@@ -149,7 +191,29 @@ module.exports.letterSort = function(string) {};
  * 'noon' --> 'no'
  */
 
-module.exports.characterMode = function(string) {};
+module.exports.characterMode = function(string) {
+  const objMap = {};
+  for (let letter of string.toLowerCase().replace(/[^a-z]/g, "")) {
+    if (!objMap[letter]) {
+      objMap[letter] = 1;
+    } else {
+      objMap[letter]++;
+    }
+  }
+  let max = 0;
+  for (let key in objMap) {
+    if (objMap[key] > max) {
+      max = objMap[key];
+    }
+  }
+  let result = "";
+  for (let key in objMap) {
+    if (objMap[key] === max) {
+      result += key;
+    }
+  }
+  return result;
+};
 
 /**
  * Sort Digits
@@ -195,7 +259,25 @@ module.exports.sortDigits = function(n) {};
  *  [1, 2, 3, 4] --> []
  */
 
-module.exports.getDuplicates = function(arr) {};
+module.exports.getDuplicates = function(arr) {
+  const objMap = {};
+  for (let el of arr) {
+    if (objMap[el]) {
+      objMap[el]++;
+    } else {
+      objMap[el] = 1;
+    }
+  }
+  const duplicates = [];
+
+  for (let key in objMap) {
+    if (objMap[key] >= 2) {
+      duplicates.push(Number(key));
+    }
+  }
+
+  return duplicates;
+};
 
 /**
  *  Anagram Pair
@@ -221,7 +303,46 @@ module.exports.getDuplicates = function(arr) {};
  *  "racecar", "aaccrres" --> false
  */
 
-module.exports.anagramPair = function(string1, string2) {};
+module.exports.anagramPair = function(string1, string2) {
+  if (string1.length !== string2.length) {
+    return false;
+  }
+
+  const string1Map = {};
+  for (let letter of string1) {
+    if (string1Map[letter]) {
+      string1Map[letter]++;
+    } else {
+      string1Map[letter] = 1;
+    }
+  }
+  const string2Map = {};
+  for (let letter of string2) {
+    if (string2Map[letter]) {
+      string2Map[letter]++;
+    } else {
+      string2Map[letter] = 1;
+    }
+  }
+
+  const string1Keys = Object.keys(string1Map);
+  const string2Keys = Object.keys(string2Map);
+  for (let letter in string1Keys) {
+    if (!string1.includes(string2Keys[letter])) {
+      return false;
+    }
+  }
+
+  const string1Values = Object.values(string1Map);
+  const string2Values = Object.values(string2Map);
+  for (let letter in string1Values) {
+    if (string1Values[letter] !== string2Values[letter]) {
+      return false;
+    }
+  }
+
+  return true;
+};
 
 /**
  *  Anagram Palindrome
@@ -249,4 +370,22 @@ module.exports.anagramPair = function(string1, string2) {};
  *  `"cat" --> false`
  */
 
-module.exports.anagramPalindrome = function(string) {};
+module.exports.anagramPalindrome = function(string) {
+  const objMap = {};
+  for (let letter of string) {
+    objMap[letter] ? objMap[letter]++ : (objMap[letter] = 1);
+  }
+  let oddCounter = 0;
+  for (let key in objMap) {
+    if (objMap[key] % 2) {
+      oddCounter++;
+    }
+  }
+  if (oddCounter === 1 && string.length % 2) {
+    return true;
+  }
+  if (oddCounter === 0 && !string.length % 2) {
+    return true;
+  }
+  return false;
+};
