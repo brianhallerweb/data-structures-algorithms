@@ -24,31 +24,39 @@ module.exports.factorialize = function(num) {
 
 // Find the longest word
 // Return the length of the longest word in the provided sentence.
-module.exports.findLongestWordLength = function(str) {
-  const words = str.replace(/[.,]/g, "").split(" ");
-  let longest = words[0].length;
-  for (let i = 1; i < words.length; i++) {
-    if (words[i].length > longest) {
-      longest = words[i].length;
-    }
-  }
-  return longest;
+// module.exports.findLongestWordLength = function(str) {
+//   const words = str.replace(/[.,]/g, "").split(" ");
+//   let longest = words[0].length;
+//   for (let i = 1; i < words.length; i++) {
+//     if (words[i].length > longest) {
+//       longest = words[i].length;
+//     }
+//   }
+//   return longest;
+// };
+module.exports.findLongestWordLength = function(s) {
+  return s.split(" ").reduce((x, y) => Math.max(x, y.length), 0);
 };
 
 //Return an array consisting of the largest number from each provided
 // sub-array. For simplicity, the provided array will contain exactly 4 sub-arrays.
+// module.exports.largestOfFour = function(arr) {
+//   const largests = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     let largest = arr[i][0];
+//     for (let j = 1; j < arr[i].length; j++) {
+//       if (arr[i][j] > largest) {
+//         largest = arr[i][j];
+//       }
+//     }
+//     largests.push(largest);
+//   }
+//   return largests;
+// };
 module.exports.largestOfFour = function(arr) {
-  const largests = [];
-  for (let i = 0; i < arr.length; i++) {
-    let largest = arr[i][0];
-    for (let j = 1; j < arr[i].length; j++) {
-      if (arr[i][j] > largest) {
-        largest = arr[i][j];
-      }
-    }
-    largests.push(largest);
-  }
-  return largests;
+  return arr.map(group =>
+    group.reduce((prev, current) => (current > prev ? current : prev))
+  );
 };
 
 //Check if a string (first argument, str) ends with the given target
@@ -95,7 +103,7 @@ module.exports.findElement = function(arr, func) {
 
 // Check if a value is classified as a boolean primitive. Return true or false.
 module.exports.booWho = function(bool) {
-  return typeof bool === "boolean" ? true : false;
+  return typeof bool === "boolean";
 };
 
 // Return the provided string with the first letter of each word capitalized.
@@ -123,7 +131,7 @@ module.exports.frankenSplice = function(arr1, arr2, n) {
 
 // Remove all falsy values from an array.
 module.exports.bouncer = function(arr) {
-  return arr.filter(el => Boolean(el) === true);
+  return arr.filter(Boolean);
 };
 
 // Return the lowest index at which a value (second argument) should be inserted

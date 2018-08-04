@@ -1,0 +1,11 @@
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/bin/Debug/netcoreapp2.1/BasicAlgosCSharp.deps.json
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/bin/Debug/netcoreapp2.1/BasicAlgosCSharp.runtimeconfig.json
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/bin/Debug/netcoreapp2.1/BasicAlgosCSharp.runtimeconfig.dev.json
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/bin/Debug/netcoreapp2.1/BasicAlgosCSharp.dll
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/bin/Debug/netcoreapp2.1/BasicAlgosCSharp.pdb
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/obj/Debug/netcoreapp2.1/BasicAlgosCSharp.csprojAssemblyReference.cache
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/obj/Debug/netcoreapp2.1/BasicAlgosCSharp.csproj.CoreCompileInputs.cache
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/obj/Debug/netcoreapp2.1/BasicAlgosCSharp.AssemblyInfoInputs.cache
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/obj/Debug/netcoreapp2.1/BasicAlgosCSharp.AssemblyInfo.cs
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/obj/Debug/netcoreapp2.1/BasicAlgosCSharp.dll
+/Users/brianhaller/Documents/javascript_projects/data-structures-algorithms/FreeCodeCampAlgos/BasicAlgosCSharp/obj/Debug/netcoreapp2.1/BasicAlgosCSharp.pdb
